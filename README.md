@@ -79,3 +79,4 @@ if __name__ == '__main__':
 
 Check http://localhost:5000/admin
 
+![example](https://github.com/cllen/flask-admin-tablefield/blob/master/example.png)
