@@ -12,7 +12,7 @@ pip install flask-admin-tablefield
 
 ```python
 from flask import Flask
-from flask_admin import Admin
+from flask_admin import Admin 
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import Column, Integer, Text
 from flask_bootstrap import Bootstrap
@@ -48,10 +48,11 @@ class PlanModel(db.Model):
 	__tablename__ = 'plan'
 
 	id = Column(Integer, primary_key=True)
-	plan = Column(Text(10800))
+	plan1 = Column(Text(10800))
+	plan2 = Column(Text(10800))
 
 from flask_admin.contrib import sqla
-from flask_admin_tablefield import TableField
+from flask_admin_tablefield import TableField,TableCheckBoxField
 class PlanAdmin(sqla.ModelView):
 
 	column_labels = {'plan':'plan',}
@@ -59,9 +60,14 @@ class PlanAdmin(sqla.ModelView):
 	column_list = ['id',]
 
 	form_overrides = {
-		'plan':TableField([
+		'plan1':TableField([
 			"#","Mon","Tue","Wed","Thu","Fri","Sat","Sun",
 		]),
+
+		'plan2':TableCheckBoxField({
+			'AM':{"Mon":0,"Tue":0,"Wed":0,"Thu":0,"Fri":0,"Sat":0,"Sun":0,},
+			'PM':{"Mon":0,"Tue":0,"Wed":0,"Thu":0,"Fri":0,"Sat":0,"Sun":0,}
+		}),
 	}
 
 admin.add_view(PlanAdmin(PlanModel, db.session, name=u'plan'))
