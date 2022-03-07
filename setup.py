@@ -2,7 +2,7 @@ import setuptools
 
 setuptools.setup(
     name="flask-admin-tablefield",
-    version="0.1.2022.3.6",
+    version="0.2.2022.3.7",
     author="hxh",
     author_email="cllenishxh@gmail.com",
     description="table field for flask-admin!",

@@ -2,7 +2,7 @@
 
 This is a field for flask-admin. It can render a text(json) field into a table html that can be edited.
 
-# Setup
+# Installation
 
 ```shell
 pip install flask-admin-tablefield
@@ -12,7 +12,7 @@ pip install flask-admin-tablefield
 
 ```python
 from flask import Flask
-from flask_admin import Admin 
+from flask_admin import Admin
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import Column, Integer, Text
 from flask_bootstrap import Bootstrap
@@ -79,4 +79,9 @@ if __name__ == '__main__':
 
 Check http://localhost:5000/admin
 
-![example](https://github.com/cllen/flask-admin-tablefield/blob/master/example.png)
+![example](https://github.com/cllen/flask-admin-tablefield/blob/master/example.png?raw=true)
+
+# Update
+
+- [x] 2022年3月6日 add feature `TableField`
+- [x] 2022年3月7日 add feature `TableCheckBoxField`

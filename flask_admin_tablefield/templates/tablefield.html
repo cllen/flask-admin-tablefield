@@ -29,13 +29,15 @@
 
 	<input type="text" id="{{ input_id }}" name='{{ input_id }}' value='' style="display:none">
 
-	<div onclick="add_row('{{ table_id }}')" type="buttom" class="btn btn-success">
-		Append
-	</div>
+	{% if is_showing_btn == True %}
+		<div onclick="add_row('{{ table_id }}')" type="buttom" class="btn btn-success">
+			Append
+		</div>
 
-	<div onclick="delete_last_row('{{ table_id }}')" type="buttom" class="btn btn-danger">
-		Pop
-	</div>
+		<div onclick="delete_last_row('{{ table_id }}')" type="buttom" class="btn btn-danger">
+			Pop
+		</div>
+	{% endif %}
 
 
 	<!-- <div onclick="table2json2input('{{ table_id }}','{{ input_id }}')" type="buttom" class="btn btn-success">

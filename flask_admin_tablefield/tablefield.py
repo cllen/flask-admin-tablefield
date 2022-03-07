@@ -6,33 +6,33 @@ import os
 import traceback
 import json
 
+import copy
 
-# import logging
-# logging.basicConfig(level=logging.DEBUG)
-# logger = logging.getLogger(__name__)
+import logging
+logging.basicConfig(level=logging.DEBUG)
+logger = logging.getLogger(__name__)
+
 
 class TableField(StringField):
 
 	# 表头
 	headers = []
+	is_showing_btn = True
 
 	def __new__(cls,*args,**kwargs):
 
 		if kwargs.get('headers') is not None or (args and isinstance(args[0], list)):
-			cls.headers = kwargs.get('headers') or args[0]
-			return cls
+			headers = kwargs.get('headers') or args[0]
+			#clone = copy.deepcopy(cls)
+			clone = type(str(abs(hash(str(headers)))),(cls,),{})
+			clone.headers = headers
+			if kwargs.get('is_showing_btn') is not None:
+				clone.is_showing_btn = kwargs.get('is_showing_btn')
+			return clone
 		else:
-			# print('__new__')
-			# print(cls)
-			# print(args)
-			# print(kwargs)
 			return super().__new__(cls,*args, **kwargs)
 
 	def process_formdata(self, valuelist=None, **args):
-
-		# logger.debug('>>> process_formdata')
-		# logger.debug(self.data)
-		# logger.debug(valuelist)
 		
 		if valuelist:
 			try:
@@ -43,15 +43,9 @@ class TableField(StringField):
 			self.data = "[]"
 
 	def __call__(self, **kwargs):
-
-		# logger.debug('>>> __call__')
-		# logger.debug(self.headers)
 		try:
 			json_data = json.loads(self.data)
 		except:
-			# logger.debug('>> loads error!')
-			# logger.debug(self.data)
-			# logger.debug(traceback.format_exc())
 			json_data = []
 
 		table_id='table_'+self.id
@@ -66,4 +60,5 @@ class TableField(StringField):
 			table_data=json_data,
 			table_id=table_id,
 			input_id=self.id,
+			is_showing_btn=self.is_showing_btn
 		)
