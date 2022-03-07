@@ -2,6 +2,8 @@
 
 This is a field for flask-admin. It can render a text(json) field into a table html that can be edited.
 
+![example](https://github.com/cllen/flask-admin-tablefield/blob/master/example.png?raw=true)
+
 # Installation
 
 ```shell
@@ -84,8 +86,6 @@ if __name__ == '__main__':
 ```
 
 Check http://localhost:5000/admin
-
-![example](https://github.com/cllen/flask-admin-tablefield/blob/master/example.png?raw=true)
 
 # Update
 
