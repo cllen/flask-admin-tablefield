@@ -1,6 +1,6 @@
 # Introduction
 
-This is a field for flask-admin. It can render a text(json) field into a table html that can be edited.
+This are some field tools for flask-admin. It can render a text(json) field into a table html that can be edited.
 
 ![example](https://github.com/cllen/flask-admin-tablefield/blob/master/example.png?raw=true)
 
